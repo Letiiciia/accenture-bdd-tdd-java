@@ -18,10 +18,10 @@
 	<form action="/valida-cpf" method="GET" onsubmit="return validaCampos()">
 
 
-		<div class="alert alert-success" role="alert">
+		<div th:if="${verdade}" class="alert alert-success" role="alert">
 			This is a success alert—check it out!
 		</div>
-		<div class="alert alert-danger" role="alert">
+		<div th:unless="${verdade}" class="alert alert-danger" role="alert">
 			This is a danger alert—check it out!
 		</div>
 
