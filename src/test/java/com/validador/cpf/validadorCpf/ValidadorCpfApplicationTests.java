@@ -82,4 +82,50 @@ class ValidadorCpfApplicationTests {
 		assertEquals(true, cliente.validarCPF());
 	}
 	
+	@Test
+	void fazendoTesteDeCpfInvalidoComLetras() {
+		Cliente cliente = new Cliente();
+		cliente.setNome("Danilo");
+		cliente.setCpf("lll.lll. lll-ll");
+		assertEquals(false, cliente.validarCPF());
+	}
+
+	@Test
+	void fazendoTesteDeCpfInvalidoComUmaLetra() {
+		Cliente cliente = new Cliente();
+		cliente.setNome("Danilo");
+		cliente.setCpf("l46.220. 360-10");
+		assertEquals(false, cliente.validarCPF());
+	}
+
+	@Test
+	void fazendoTesteDeCpfInvalidoComCaratcteresEspeciais() {
+		Cliente cliente = new Cliente();
+		cliente.setNome("Danilo");
+		cliente.setCpf("%46.220. 360-10");
+		assertEquals(false, cliente.validarCPF());
+	}
+
+	@Test
+	void fazendoTesteDeCpfInvalidoComNumeroMaiorQueOnze() {
+		Cliente cliente = new Cliente();
+		cliente.setNome("Danilo");
+		cliente.setCpf("%46.220. 360-104549");
+		assertEquals(false, cliente.validarCPF());
+	}
+
+	@Test
+	void fazendoTesteDeCpfInvalidoDoidoQuePassou() {
+		Cliente cliente = new Cliente();
+		cliente.setNome("Danilo");
+		cliente.setCpf("69b.969.790-88");
+		assertEquals(false, cliente.validarCPF());
+	}
+
+	@Test
+	void fazendoTesteDeCpfInvalidoVazio() {
+		Cliente cliente = new Cliente();
+		cliente.setNome("Danilo");
+		assertEquals(false, cliente.validarCPF());
+	}
 }
